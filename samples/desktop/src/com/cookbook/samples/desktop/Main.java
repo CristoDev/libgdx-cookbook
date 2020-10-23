@@ -25,6 +25,7 @@ import com.cookbook.samples.desktop.SampleList.SampleLauncher;
 
 public class Main extends JFrame implements SampleLauncher {
 	// changement de code pour avoir la liste toujours disponible
+	// test modification pour GIT depuis INTELLIJ
 	private SampleMainProcess sampleMainProcess;
 
 	public Main () throws HeadlessException {
