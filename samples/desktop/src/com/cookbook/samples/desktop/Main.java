@@ -21,15 +21,15 @@ import java.awt.HeadlessException;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
 
-import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
-import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
-import com.cookbook.samples.GdxSample;
-import com.cookbook.samples.GdxSamples;
 import com.cookbook.samples.desktop.SampleList.SampleLauncher;
 
 public class Main extends JFrame implements SampleLauncher {
+	// changement de code pour avoir la liste toujours disponible
+	private SampleMainProcess sampleMainProcess;
+
 	public Main () throws HeadlessException {
 		super("Libgdx Cookbook Samples");
+		sampleMainProcess=new SampleMainProcess();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setContentPane(new SampleList(this));
 		pack();
@@ -45,23 +45,6 @@ public class Main extends JFrame implements SampleLauncher {
 
 	@Override
 	public boolean launchSample(String testName) {
-		GdxSample sample = GdxSamples.newSample(testName);
-		
-		if (sample != null) {
-			LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-			config.width = 1280;
-			config.height = 720;
-			config.title = testName;
-			config.forceExit = false;
-			sample.setPlatformResolver(new DesktopResolver());
-			
-			new LwjglApplication(sample, config);
-			
-			dispose();
-			
-			return true;
-		}
-		
-		return false;
+		return sampleMainProcess.launchSample(testName);
 	}
 }

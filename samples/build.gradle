@@ -16,7 +16,6 @@ buildscript {
 }
 
 allprojects {
-    apply plugin: "eclipse"
     apply plugin: "idea"
     
     version = "1.0"
@@ -62,7 +61,7 @@ project(":desktop") {
         compile "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-desktop"
     }
 }
-
+/*
 project(":android") {
     apply plugin: "android"
 
@@ -122,7 +121,4 @@ project(":ios") {
     }
 }
 
-
-tasks.eclipse.doLast {
-	delete ".project"
-}
+*/
